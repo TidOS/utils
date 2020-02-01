@@ -38,6 +38,18 @@ TOTALX=`xrandr | head -n1 | awk '{print $8}'`
 TOTALY=`xrandr | head -n1 | awk '{print $10}' | sed s/','//`
 #echo "screen is " $TOTALX x $TOTALY
 
+set_pape () {
+    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'var allDesktops = desktops();
+print (allDesktops);
+for ( i = 0; i < allDesktops.length; i++ ) {
+    d = allDesktops[i];
+    d.wallpaperPlugin = "org.kde.image";
+    d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
+    //we need to pass in each of our papes and set it - d is the current desktop as we loop over
+    d.writeConfig("Image", "'file://home/jordan/Nextcloud/Photos/wallpaper/46L02C6.jpg'")
+}'
+}
+
 
 #xrandr outputs in format as follows:
 #EXAMPLE: 0: +*DP-4 2560/598x1440/336+1920+0  DP-4
@@ -64,3 +76,5 @@ do
     convert $1 -filter Cubic -resize "$TOTALX"x"$TOTALY"\! -crop "$WIDTH"x"$HEIGHT"+"$OFFX"+"$OFFY" +repage $NAME-$1 2>/dev/null
     
 done
+
+
