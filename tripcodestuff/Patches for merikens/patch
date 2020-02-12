@@ -1,0 +1,5 @@
+#!/bin/bash
+patch BuildAll.sh -i BuildAll.sh.patch
+patch SourceFiles/CMakeLists.txt -i CMakeLists.txt.patch
+patch SourceFiles/Main.cpp -i Main.cpp.patch
+patch SourceFiles/UtilityFunctions.cpp -i UtilityFunctions.cpp.patch

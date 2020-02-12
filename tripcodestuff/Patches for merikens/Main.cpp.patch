@@ -1,0 +1,4 @@
+879c879
+< static std::queue<struct OpenCLDeviceSearchThreadInfo> deleted_opencl_device_search_thread_info_queue;
+---
+> // static std::queue<struct OpenCLDeviceSearchThreadInfo> deleted_opencl_device_search_thread_info_queue;

@@ -1,0 +1,8 @@
+7c7
+< B2_OPTIONS=""
+---
+> B2_OPTIONS="--ignore-site-config"
+24c24
+< 	CMAKE_OPTIONS=$'$CMAKE_OPTIONS -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS=-stdlib=libc++'
+---
+> 	CMAKE_OPTIONS=$'$CMAKE_OPTIONS -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS=-stdlib=libc++ -DCFLAGS=-stdlib=libc++ '

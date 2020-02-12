@@ -1,0 +1,15 @@
+115c115
+< 	set(MTE_COMPILE_FLAGS "${MTE_COMPILE_FLAGS} -DENABLE_CUDA -DCUDA_VERSION=${CUDA_VERSION_MAJOR}${CUDA_VERSION_MINOR}")
+---
+> 	set(MTE_COMPILE_FLAGS "${MTE_COMPILE_FLAGS} -DENABLE_CUDA -DCUDA_VERSION=10.2")
+297,298d296
+<             -gencode=arch=compute_20,code=sm_20 
+<             -gencode=arch=compute_20,code=sm_21 
+306c304
+< 	    set(CUDA_NVCC_FLAGS -DENABLE_CUDA;-gencode=arch=compute_20,code=sm_20;-gencode=arch=compute_20,code=sm_21;-gencode=arch=compute_30,code=sm_30;-gencode=arch=compute_32,code=sm_32;-gencode=arch=compute_35,code=sm_35;-gencode=arch=compute_37,code=sm_37;-gencode=arch=compute_50,code=sm_50;-gencode=arch=compute_52,code=sm_52;-gencode=arch=compute_53,code=sm_53;-gencode=arch=compute_60,code=sm_60;-gencode=arch=compute_61,code=sm_61;-gencode=arch=compute_61,code=compute_61)
+---
+> 	    set(CUDA_NVCC_FLAGS -DENABLE_CUDA;-gencode=arch=compute_30,code=sm_30;-gencode=arch=compute_32,code=sm_32;-gencode=arch=compute_35,code=sm_35;-gencode=arch=compute_37,code=sm_37;-gencode=arch=compute_50,code=sm_50;-gencode=arch=compute_52,code=sm_52;-gencode=arch=compute_53,code=sm_53;-gencode=arch=compute_60,code=sm_60;-gencode=arch=compute_61,code=sm_61;-gencode=arch=compute_61,code=compute_61)
+308c306
+< 	    set(CUDA_NVCC_FLAGS -DENABLE_CUDA;-gencode=arch=compute_20,code=sm_20;-gencode=arch=compute_20,code=sm_21;-gencode=arch=compute_30,code=sm_30;-gencode=arch=compute_32,code=sm_32;-gencode=arch=compute_35,code=sm_35;-gencode=arch=compute_37,code=sm_37;-gencode=arch=compute_50,code=sm_50;-gencode=arch=compute_52,code=sm_52;-gencode=arch=compute_53,code=sm_53;-gencode=arch=compute_53,code=compute_53)
+---
+> 	    set(CUDA_NVCC_FLAGS -DENABLE_CUDA;-gencode=arch=compute_30,code=sm_30;-gencode=arch=compute_32,code=sm_32;-gencode=arch=compute_35,code=sm_35;-gencode=arch=compute_37,code=sm_37;-gencode=arch=compute_50,code=sm_50;-gencode=arch=compute_52,code=sm_52;-gencode=arch=compute_53,code=sm_53;-gencode=arch=compute_53,code=compute_53)

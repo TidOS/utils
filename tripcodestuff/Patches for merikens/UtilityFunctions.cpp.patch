@@ -1,0 +1,4 @@
+128c128
+< static uint64_t _xgetbv(uint32_t xcr)
+---
+> extern long long int _xgetbv(unsigned int xcr)
