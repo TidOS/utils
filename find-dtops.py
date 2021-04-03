@@ -20,7 +20,7 @@ for threads in gen_chan():
     sub = get_threads('sub')
     no = get_threads('no')
     #desktop thread search string
-    if "desktop thread" in com.lower()or "desktop thread" in sub.lower():
+    if "desktop threa" in com.lower()or "desktop threa" in sub.lower():
         print(str(no))
         exit(0)
 

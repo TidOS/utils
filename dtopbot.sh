@@ -2,12 +2,13 @@
 SLEEPTIME=300
 DTOPFINDERSCRIPT="/home/jordan/src/utils/find-dtops.py"
 POSTEDTOPSFILE="/home/jordan/.dtopbotthreads"
-THREAD=`eval $DTOPFINDERSCRIPT`
+THREAD=`$DTOPFINDERSCRIPT`
 SCROT="/home/jordan/.desktop.png"
 SCROTPOST="/home/jordan/.post.png"
 POSTERSCRIPT="/home/jordan/src/DesktopThread/DesktopThread.py"
-COMMENT=`misfortune | sed 's/\-//g'`
+COMMENT=`misfortune -sa | sed 's/\-//g'`
 TIDUSPATH="/home/jordan/Nextcloud/Photos/Tidus/Tidus.jpg"
+IFTTTAPIKEY=`cat ~/.webhookapi`
 cd ~/src/DesktopThread
 echo "desktop bot"
 while true
@@ -17,11 +18,9 @@ do
     fi
 
     if [ "$THREAD" -lt 0 ]; then
-        echo "no desktop threads found"
-    fi
+        echo "no desktop threads found at " `date`
 
-    if grep -Fxq $THREAD $POSTEDTOPSFILE
-        then
+    else if grep -Fxq $THREAD $POSTEDTOPSFILE ; then
             #clear
 	    POSTING="False"
             #echo "already posted in "$THREAD
@@ -44,12 +43,15 @@ do
                 \( $TIDUSPATH -resize x35 \) \
             -geometry +2.5+0 -composite \) \
             -append $SCROTPOST
-
+	    URL=\"https://boards.4chan.org/g/thread/$THREAD\"
             $POSTERSCRIPT -G -X -F $SCROTPOST -C "$COMMENT"
-
+	    curl -X POST -H "Content-Type: application/json" -d "{\"value1\":$URL}" https://maker.ifttt.com/trigger/notify/with/key/$IFTTTAPIKEY
+	     COMMENT=`misfortune -sa | sed 's/\-//g'`
+        fi
     fi
-sleep $SLEEPTIME
-THREAD=`eval $DTOPFINDERSCRIPT`
+
+    sleep $SLEEPTIME
+    THREAD=`$DTOPFINDERSCRIPT`
 done
 
 
