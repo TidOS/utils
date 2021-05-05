@@ -45,7 +45,7 @@ do
             -append $SCROTPOST
 	    URL=\"https://boards.4chan.org/g/thread/$THREAD\"
             $POSTERSCRIPT -G -X -F $SCROTPOST -C "$COMMENT"
-	    curl -X POST -H "Content-Type: application/json" -d "{\"value1\":$URL}" https://maker.ifttt.com/trigger/notify/with/key/$IFTTTAPIKEY
+	    curl -s -X POST -H "Content-Type: application/json" -d "{\"value1\":$URL}" https://maker.ifttt.com/trigger/notify/with/key/$IFTTTAPIKEY > /dev/null
 	     COMMENT=`misfortune -sa | sed 's/\-//g'`
         fi
     fi
